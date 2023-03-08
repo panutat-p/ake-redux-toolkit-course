@@ -1,3 +1,8 @@
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import YupPassword from 'yup-password';
+import * as yup from 'yup';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -6,17 +11,31 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
+
+YupPassword(yup); // extend yup
 
 export default function RegisterPage() {
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  }
+  const schema = yup.object().shape({
+    firstName: yup.string().required('first name is required'),
+    lastName: yup.string().required('last name is required'),
+    email: yup.string().required('email is required').email('invalid Email'),
+    password: yup
+      .string()
+      .required('password is required')
+      .min(6, 'password is too short')
+      .minSymbols(1, 'special character is required')
+      .minUppercase(1, 'capital letter is required'),
+  });
+  type FormData = yup.InferType<typeof schema>;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+    mode: 'all',
+  });
+  const onSubmit = (data: FormData) => console.log(data);
 
   return (
     <>
@@ -50,50 +69,47 @@ export default function RegisterPage() {
           <Box
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
+                  {...register('firstName')}
+                  error={errors.firstName ? true : false}
+                  helperText={errors.firstName && errors.firstName.message}
                   fullWidth
-                  id="firstName"
                   label="First Name"
                   autoFocus
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
+                  {...register('lastName')}
+                  error={errors.lastName ? true : false}
+                  helperText={errors.lastName && errors.lastName.message}
                   fullWidth
-                  id="lastName"
                   label="Last Name"
-                  name="lastName"
                   autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  {...register('email')}
+                  error={errors.email ? true : false}
+                  helperText={errors.email && errors.email.message}
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  label="Email"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  {...register('password')}
+                  error={errors.password ? true : false}
+                  helperText={errors.password && errors.password.message}
                   fullWidth
-                  name="password"
                   label="Password"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
                 />
               </Grid>
             </Grid>
