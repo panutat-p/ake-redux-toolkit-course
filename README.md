@@ -17,6 +17,10 @@ https://github.com/mui/material-ui/blob/master/examples/material-vite-ts/src/the
 
 https://github.com/mui/material-ui/blob/master/examples/material-vite-ts/src/main.tsx
 
+https://github.com/mui/material-ui/tree/v5.11.12/docs/data/material/getting-started/templates/album
+
+https://github.com/mui/material-ui/tree/v5.11.12/docs/data/material/getting-started/templates/sign-up
+
 ## Deploy
 
 ```shell
