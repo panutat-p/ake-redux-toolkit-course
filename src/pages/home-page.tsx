@@ -29,21 +29,10 @@ export default function HomePage() {
           }}
         >
           <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
+            <Typography component="h1" variant="h2" align="center" color="text.primary" gutterBottom>
               Leave Management System
             </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
+            <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
               <Button variant="contained">Log In</Button>
               <Button variant="outlined" component={Link} to="/register">
                 Sign Up
@@ -57,14 +46,8 @@ export default function HomePage() {
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
-          ducimus est facilis fugit hic labore nostrum quos repellat sed vero?
+        <Typography variant="subtitle1" align="center" color="text.secondary" component="p">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores ducimus est facilis fugit hic labore nostrum quos repellat sed vero?
           voluptate.
         </Typography>
       </Box>

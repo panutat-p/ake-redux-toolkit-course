@@ -42,12 +42,7 @@ export default function RegisterPage() {
   });
   async function onSubmit(data: FormData) {
     try {
-      const userCredential = await registerUser(
-        data.firstName,
-        data.lastName,
-        data.email,
-        data.password!
-      );
+      const userCredential = await registerUser(data.firstName, data.lastName, data.email, data.password!);
       if (userCredential.user != null) {
         toast.success('Register successfully');
         navigate('/');
@@ -90,12 +85,7 @@ export default function RegisterPage() {
           <Typography component="h1" variant="h5">
             Registration
           </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit(onSubmit)}
-            sx={{ mt: 3 }}
-          >
+          <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -136,12 +126,7 @@ export default function RegisterPage() {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign Up
             </Button>
           </Box>
