@@ -6,6 +6,8 @@ https://reactrouter.com/en/main/start/tutorial#setup
 
 https://react-hook-form.com/get-started
 
+https://react-hot-toast.com/docs
+
 ```shell
 npm i  -D prettier
 npm i @mui/material @emotion/react @emotion/styled
@@ -14,6 +16,7 @@ npm i react-router-dom
 npm i react-hook-form
 npm i @hookform/resolvers
 npm i yup yup-password
+npm i react-hot-toast
 ```
 
 ## Material UI
