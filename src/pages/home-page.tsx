@@ -33,7 +33,9 @@ export default function HomePage() {
               Leave Management System
             </Typography>
             <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
-              <Button variant="contained">Log In</Button>
+              <Button variant="contained" component={Link} to="/login">
+                Log In
+              </Button>
               <Button variant="outlined" component={Link} to="/register">
                 Sign Up
               </Button>
