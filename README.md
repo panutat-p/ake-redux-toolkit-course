@@ -18,6 +18,7 @@ npm i @hookform/resolvers
 npm i yup yup-password
 npm i react-hot-toast
 npm i firebase
+npm i @mui/lab
 ```
 
 ## Material UI
@@ -29,6 +30,8 @@ https://github.com/mui/material-ui/blob/master/examples/material-vite-ts/src/mai
 https://github.com/mui/material-ui/tree/v5.11.12/docs/data/material/getting-started/templates/album
 
 https://github.com/mui/material-ui/tree/v5.11.12/docs/data/material/getting-started/templates/sign-up
+
+https://mui.com/material-ui/api/loading-button/
 
 ## Form
 

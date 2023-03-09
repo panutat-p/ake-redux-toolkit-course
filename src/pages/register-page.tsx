@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import { registerUser } from '../services/auth.service';
 
@@ -35,11 +36,8 @@ export default function RegisterPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: yupResolver(schema),
-    mode: 'all',
-  });
+    formState: { isSubmitting, errors },
+  } = useForm<FormData>({ resolver: yupResolver(schema), mode: 'all' });
   async function onSubmit(data: FormData) {
     try {
       const userCredential = await registerUser(data.firstName, data.lastName, data.email, data.password!);
@@ -126,9 +124,9 @@ export default function RegisterPage() {
                 />
               </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <LoadingButton type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} loading={isSubmitting}>
               Sign Up
-            </Button>
+            </LoadingButton>
           </Box>
         </Box>
       </Container>
