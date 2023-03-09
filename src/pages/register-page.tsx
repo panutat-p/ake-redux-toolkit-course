@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import YupPassword from 'yup-password';
 import * as yup from 'yup';
+import toast from 'react-hot-toast';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -12,9 +13,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+import { registerUser } from '../services/auth.service';
+
 YupPassword(yup); // extend yup
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
+
   const schema = yup.object().shape({
     firstName: yup.string().required('first name is required'),
     lastName: yup.string().required('last name is required'),
@@ -35,7 +40,26 @@ export default function RegisterPage() {
     resolver: yupResolver(schema),
     mode: 'all',
   });
-  const onSubmit = (data: FormData) => console.log(data);
+  async function onSubmit(data: FormData) {
+    try {
+      const userCredential = await registerUser(
+        data.firstName,
+        data.lastName,
+        data.email,
+        data.password!
+      );
+      if (userCredential.user != null) {
+        toast.success('Register successfully');
+        navigate('/');
+      }
+    } catch (e: any) {
+      if (e.code === 'auth/email-already-in-use') {
+        toast.error('Email is duplicated');
+      } else {
+        toast.error(e.message);
+      }
+    }
+  }
 
   return (
     <>
