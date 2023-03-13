@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: '',
+  apiKey: 'AIzaSyAY6QGqvBnxbnbFtZqv-rutTaGQfV2R8jg',
   authDomain: 'ake-redux-toolkit-course.firebaseapp.com',
   projectId: 'ake-redux-toolkit-course',
   storageBucket: 'ake-redux-toolkit-course.appspot.com',
