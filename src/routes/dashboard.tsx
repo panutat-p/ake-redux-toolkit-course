@@ -1,13 +1,13 @@
 import { RouteObject } from 'react-router-dom';
 
-import DashboardLayout from '../pages/dashboard-layout';
 import HomePage from '../pages/dashboard/home-page';
 import LeavePage from '../pages/dashboard/leave-page';
 import HistoryPage from '../pages/dashboard/history-page';
+import AuthGuard from '../guards/auth-guard';
 
 const routeDashboard: RouteObject = {
   path: '/dashboard',
-  element: <DashboardLayout />,
+  element: <AuthGuard />,
   children: [
     {
       path: '',
