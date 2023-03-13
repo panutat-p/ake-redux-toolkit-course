@@ -1,7 +1,9 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { getFirestore, setDoc, doc } from 'firebase/firestore';
-import firebaseApp from '../configs/firebase';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 import { UserCredential } from '@firebase/auth';
+
+import firebaseApp from '../configs/firebase';
+import { ProfileDocument } from '../types/profile.type';
 
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
@@ -15,7 +17,6 @@ export async function registerUser(firstName: string, lastName: string, email: s
       photoUrl: 'https://codingthailand.com/site/img/nopic.png',
       role: 'member',
     });
-
     return userCredential;
   } catch (e) {
     throw e;
@@ -36,4 +37,19 @@ export async function logout(): Promise<void> {
   } catch (e) {
     throw e;
   }
+}
+
+export async function getProfile(userID: string) {
+  const accountRef = doc(db, 'users', userID);
+  const docSnap = await getDoc(accountRef);
+  if (!docSnap.exists()) {
+    return null;
+  }
+
+  let profile = docSnap.data() as ProfileDocument;
+
+  return {
+    userID: userID,
+    ...profile,
+  };
 }

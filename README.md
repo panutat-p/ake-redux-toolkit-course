@@ -53,6 +53,8 @@ https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en&authuser=0
 
 https://firebase.google.com/docs/reference/js/auth#autherrorcodes
 
+https://firebase.google.com/docs/auth/web/manage-users?hl=en&authuser=0#get_the_currently_signed-in_user
+
 ## Deploy
 
 ```shell
