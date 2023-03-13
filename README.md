@@ -8,6 +8,8 @@ https://react-hook-form.com/get-started
 
 https://react-hot-toast.com/docs
 
+https://redux-toolkit.js.org/introduction/getting-started
+
 ```shell
 npm i  -D prettier
 npm i @mui/material @emotion/react @emotion/styled
@@ -19,6 +21,7 @@ npm i yup yup-password
 npm i react-hot-toast
 npm i firebase
 npm i @mui/lab
+npm i @reduxjs/toolkit react-redux
 ```
 
 ## Material UI
