@@ -14,9 +14,13 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hooks';
+import { selectAuthState } from '../../redux/auth-slice';
 
 export default function AccountMenu() {
   const navigate = useNavigate();
+
+  const { profile } = useAppSelector(selectAuthState);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -37,8 +41,9 @@ export default function AccountMenu() {
   return (
     <Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Typography sx={{ minWidth: 100 }}>Profile</Typography>
+        <Typography sx={{ minWidth: 100 }}>
+          {profile?.firstName} {profile?.lastName}
+        </Typography>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}

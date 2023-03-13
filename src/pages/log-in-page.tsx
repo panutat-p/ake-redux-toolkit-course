@@ -15,11 +15,14 @@ import Container from '@mui/material/Container';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import { login } from '../services/auth.service';
+import { useAppDispatch } from '../redux/hooks';
+import { getProfileThunk } from '../redux/auth-thunk';
 
 YupPassword(yup); // extend yup
 
 export default function LogInPage() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const schema = yup.object().shape({
     email: yup.string().required('email is required').email('invalid Email'),
@@ -35,6 +38,7 @@ export default function LogInPage() {
     try {
       const userCredential = await login(data.email, data.password!);
       if (userCredential.user != null) {
+        dispatch(getProfileThunk(userCredential.user.uid));
         toast.success('Log in successfully');
         navigate('/dashboard');
       }

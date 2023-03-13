@@ -44,7 +44,7 @@ https://react-hook-form.com/get-started#SchemaValidation
 
 https://github.com/knicola/yup-password
 
-## FireBase
+## FireBase Guide
 
 https://firebase.google.com/docs/auth/web/password-auth?authuser=0&hl=en#web-version-9
 
@@ -57,6 +57,10 @@ https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en&authuser=0
 https://firebase.google.com/docs/reference/js/auth#autherrorcodes
 
 https://firebase.google.com/docs/auth/web/manage-users?hl=en&authuser=0#get_the_currently_signed-in_user
+
+## Redux Toolkit Guide
+
+https://redux-toolkit.js.org/tutorials/typescript#define-typed-hooks
 
 ## Deploy
 
