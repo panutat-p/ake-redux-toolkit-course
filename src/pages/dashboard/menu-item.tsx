@@ -3,7 +3,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { History, Home, People } from '@mui/icons-material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 type MenuItemProps = {
   label: string;
@@ -11,6 +11,8 @@ type MenuItemProps = {
   href: string;
 };
 export default function MainListItems() {
+  const location = useLocation();
+
   const menuItem: Array<MenuItemProps> = [
     { label: 'Home', icon: <Home />, href: '/dashboard' },
     { label: 'Leave', icon: <People />, href: '/dashboard/leave' },
@@ -20,7 +22,12 @@ export default function MainListItems() {
   return (
     <Fragment>
       {menuItem.map((item) => (
-        <ListItemButton key={item.label} component={NavLink} to={item.href}>
+        <ListItemButton
+          key={item.label}
+          component={NavLink}
+          to={item.href}
+          sx={{ backgroundColor: location.pathname === item.href ? '#81d4fa' : '' }}
+        >
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.label} />
         </ListItemButton>
