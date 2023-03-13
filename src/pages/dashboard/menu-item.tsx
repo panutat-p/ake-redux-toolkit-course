@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import { History, People } from '@mui/icons-material';
+import { History, Home, People } from '@mui/icons-material';
+import { NavLink } from 'react-router-dom';
 
 type MenuItemProps = {
   label: string;
@@ -12,15 +12,15 @@ type MenuItemProps = {
 };
 export default function MainListItems() {
   const menuItem: Array<MenuItemProps> = [
-    { label: 'Home', icon: <DashboardIcon />, href: '/dashboard' },
-    { label: 'Leave', icon: <People />, href: '/dashboard' },
-    { label: 'History', icon: <History />, href: '/dashboard' },
+    { label: 'Home', icon: <Home />, href: '/dashboard' },
+    { label: 'Leave', icon: <People />, href: '/dashboard/leave' },
+    { label: 'History', icon: <History />, href: '/dashboard/history' },
   ];
 
   return (
     <Fragment>
       {menuItem.map((item) => (
-        <ListItemButton key={item.label}>
+        <ListItemButton key={item.label} component={NavLink} to={item.href}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.label} />
         </ListItemButton>
