@@ -4,6 +4,7 @@ import { UserCredential } from '@firebase/auth';
 
 import firebaseApp from '../configs/firebase';
 import { ProfileDocument } from '../types/profile.type';
+import { TABLE_USER } from '../configs/firestore';
 
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
@@ -11,7 +12,7 @@ const db = getFirestore(firebaseApp);
 export async function registerUser(firstName: string, lastName: string, email: string, password: string): Promise<UserCredential> {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await setDoc(doc(db, 'user', userCredential.user.uid), {
+    await setDoc(doc(db, TABLE_USER, userCredential.user.uid), {
       firstName: firstName,
       lastName: lastName,
       photoUrl: 'https://codingthailand.com/site/img/nopic.png',
@@ -40,9 +41,10 @@ export async function logout(): Promise<void> {
 }
 
 export async function getProfile(userID: string) {
-  const accountRef = doc(db, 'users', userID);
+  const accountRef = doc(db, TABLE_USER, userID);
   const docSnap = await getDoc(accountRef);
   if (!docSnap.exists()) {
+    console.log('🟥 Document does not exist');
     return null;
   }
 
