@@ -16,6 +16,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import MainListItems from './dashboard/menu-item';
 import AccountMenu from './dashboard/account-menu';
+import { withAuthGuard } from '../higher-order-components/with-auth-guard';
 
 const drawerWidth: number = 240;
 
@@ -139,6 +140,9 @@ function DashboardContent() {
   );
 }
 
-export default function DashboardLayout() {
+function DashboardLayout() {
   return <DashboardContent />;
 }
+
+// protected with AuthGuard
+export default withAuthGuard(DashboardLayout);

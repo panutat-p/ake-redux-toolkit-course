@@ -62,6 +62,8 @@ https://firebase.google.com/docs/auth/web/manage-users?hl=en&authuser=0#get_the_
 
 https://redux-toolkit.js.org/tutorials/typescript#define-typed-hooks
 
+https://reactjs.org/docs/higher-order-components.html
+
 ## Deploy
 
 ```shell
