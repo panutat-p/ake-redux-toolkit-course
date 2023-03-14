@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { UserCredential } from '@firebase/auth';
 
 import firebaseApp from '../configs/firebase';
@@ -54,4 +54,9 @@ export async function getProfile(userID: string) {
     userID: userID,
     ...profile,
   };
+}
+
+export async function updatePhoto(userID: string, photoURL: string): Promise<void> {
+  const target = doc(db, TABLE_USER, userID);
+  await updateDoc(target, { photoURL: photoURL });
 }

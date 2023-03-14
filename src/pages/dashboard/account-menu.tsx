@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -79,7 +80,7 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} component={Link} to="/profile">
           <Avatar src={profile?.photoURL} sx={{ width: 32, height: 32 }} /> Profile
         </MenuItem>
         <Divider />
