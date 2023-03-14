@@ -1,6 +1,4 @@
 import { Fragment, useState } from 'react';
-import { logout } from '../../services/auth.service';
-import toast from 'react-hot-toast';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -10,17 +8,12 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../redux/hooks';
-import { selectAuthState } from '../../redux/auth-slice';
+
+import { useProfile } from '../../hooks/use-profile';
 
 export default function AccountMenu() {
-  const navigate = useNavigate();
-
-  const { profile } = useAppSelector(selectAuthState);
+  const { profile, handleLogOut } = useProfile();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -31,12 +24,6 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  async function logOutToHome() {
-    await logout();
-    toast.success('Logged out');
-    navigate('/');
-  }
 
   return (
     <Fragment>
@@ -96,7 +83,7 @@ export default function AccountMenu() {
           <Avatar src={profile?.photoURL} sx={{ width: 32, height: 32 }} /> Profile
         </MenuItem>
         <Divider />
-        <MenuItem onClick={logOutToHome}>
+        <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
