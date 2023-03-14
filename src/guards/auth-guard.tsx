@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 
 import firebaseApp from '../configs/firebase';
-import DashboardLayout from '../pages/dashboard-layout';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { selectAuthState } from '../redux/auth-slice';
 import { getProfileThunk } from '../redux/auth-thunk';
 
-function AuthGuard() {
+type AuthGuardProps = {
+  children: ReactNode;
+};
+
+function AuthGuard(props: AuthGuardProps) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const auth = getAuth(firebaseApp);
@@ -40,7 +43,7 @@ function AuthGuard() {
     return <Navigate to={'/login'} />;
   }
 
-  return <DashboardLayout />;
+  return <>{props.children}</>;
 }
 
 export default AuthGuard;
