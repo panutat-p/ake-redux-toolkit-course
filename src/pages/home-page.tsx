@@ -8,11 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import { useProfile } from '../hooks/use-profile';
-
 export default function HomePage() {
-  const { profile } = useProfile();
-
   return (
     <>
       <AppBar position="relative">

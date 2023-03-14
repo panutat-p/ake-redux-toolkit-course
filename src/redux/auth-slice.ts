@@ -21,7 +21,7 @@ export const authSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(getProfileThunk.pending, (state) => {
       console.log('🟨 pending');
-      state.isLoading = true;
+      // state.isLoading = true;
     });
     builder.addCase(getProfileThunk.fulfilled, (state, action) => {
       console.log('🟩 fulfilled');

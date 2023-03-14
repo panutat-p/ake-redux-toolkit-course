@@ -1,5 +1,7 @@
 import { History } from '@mui/icons-material';
 
+import { withAdminGuard } from '../../higher-order-components/with-admin-guard';
+
 function HistoryPage() {
   return (
     <>
@@ -9,4 +11,4 @@ function HistoryPage() {
   );
 }
 
-export default HistoryPage;
+export default withAdminGuard(HistoryPage);
