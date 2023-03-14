@@ -16,6 +16,8 @@ function HomePage() {
       <Typography variant="h5">
         Welcome {profile?.firstName} {profile?.lastName}
       </Typography>
+      <Typography variant="subtitle1">user ID: {profile?.userID}</Typography>
+      <Typography variant="subtitle1">role: {profile?.role}</Typography>
     </>
   );
 }
