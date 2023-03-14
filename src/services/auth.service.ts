@@ -15,7 +15,7 @@ export async function registerUser(firstName: string, lastName: string, email: s
     await setDoc(doc(db, TABLE_USER, userCredential.user.uid), {
       firstName: firstName,
       lastName: lastName,
-      photoUrl: 'https://codingthailand.com/site/img/nopic.png',
+      photoURL: 'https://codingthailand.com/site/img/nopic.png',
       role: 'member',
     });
     return userCredential;
