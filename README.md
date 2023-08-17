@@ -24,6 +24,10 @@ npm i @mui/lab
 npm i @reduxjs/toolkit react-redux
 ```
 
+## Course
+
+https://drive.google.com/drive/folders/1a6oteo2nT1PbZ782I57M6EPn6ChF_z9c
+
 ## Material UI
 
 https://github.com/mui/material-ui/blob/master/examples/material-vite-ts/src/theme.tsx
